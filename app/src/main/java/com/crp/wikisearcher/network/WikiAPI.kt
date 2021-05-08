@@ -1,6 +1,6 @@
 package com.crp.wikisearcher.network
 
-import com.crp.wikisearcher.datamodel.WikiResponse
+import com.crp.wikisearcher.datamodel.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
@@ -24,5 +24,5 @@ interface WikiAPI {
         @Query("generator") generator: String,
         @Query("pithumbsize") pithumbsize: String,
         @Query("exintro") exintro: String
-    ): WikiResponse
+    ): Response
 }

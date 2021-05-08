@@ -7,8 +7,8 @@ import coil.api.load
 import com.crp.wikisearcher.databinding.WikiSearchItemBinding
 import com.crp.wikisearcher.datamodel.Page
 
-class WikiAdapter(private val list: List<Page>, val adapterOnClick: (Any) -> Unit) :
-    RecyclerView.Adapter<WikiAdapter.WikiView>() {
+class Adapter(private val list: List<Page>, val adapterOnClick: (Any) -> Unit) :
+    RecyclerView.Adapter<Adapter.WikiView>() {
 
     inner class WikiView(private val binding: WikiSearchItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

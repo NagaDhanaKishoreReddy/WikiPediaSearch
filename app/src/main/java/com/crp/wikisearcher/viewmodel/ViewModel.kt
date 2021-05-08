@@ -1,11 +1,10 @@
 package com.crp.wikisearcher.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.crp.wikisearcher.datamodel.WikiResponse
+import com.crp.wikisearcher.datamodel.Response
 import com.crp.wikisearcher.network.WikiAPI
 import com.crp.wikisearcher.view.State
 import kotlinx.coroutines.Dispatchers
@@ -16,14 +15,14 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 
 
-class WikiViewModel : ViewModel(), KoinComponent {
+class ViewModel : ViewModel(), KoinComponent {
     private val wikiAPI: WikiAPI by inject()
-    private val _postsLiveData = MutableLiveData<State<WikiResponse>>()
-    val postsLiveData: LiveData<State<WikiResponse>>
+    private val _postsLiveData = MutableLiveData<State<Response>>()
+    val postsLiveData: LiveData<State<Response>>
         get() = _postsLiveData
 
     fun getWikiData(searchStr: String) {
-        _postsLiveData.value = State.loading<WikiResponse>()
+        _postsLiveData.value = State.loading<Response>()
         viewModelScope.launch(Dispatchers.IO) {
             val wikiResponse =
                 wikiAPI.getSearchRespone(
@@ -46,13 +45,13 @@ class WikiViewModel : ViewModel(), KoinComponent {
                         if (it1.isNotEmpty()) {
                             _postsLiveData.value = State.success(wikiResponse)
                         } else {
-                            _postsLiveData.value = State.error<WikiResponse>("No Data Found")
+                            _postsLiveData.value = State.error<Response>("No Data Found")
                         }
                     } ?: run {
-                        _postsLiveData.value = State.error<WikiResponse>("No Data Found")
+                        _postsLiveData.value = State.error<Response>("No Data Found")
                     }
                 } ?: run {
-                    _postsLiveData.value = State.error<WikiResponse>("No Data Found")
+                    _postsLiveData.value = State.error<Response>("No Data Found")
                 }
 
             }

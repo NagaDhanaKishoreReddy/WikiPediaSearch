@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    app:cardBackgroundColor="@color/colorPrimaryDark"
     app:cardCornerRadius="10dp"
-    app:strokeColor="#1D1D1D"
+    app:strokeColor="#d3d3d3"
     app:strokeWidth="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +35,6 @@
             android:drawableEnd="@drawable/ic_open_in_new"
             android:fontFamily="@font/lora_regular"
             android:maxLines="1"
-            android:textColor="@android:color/white"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/itemLogo"
@@ -56,7 +54,6 @@
             android:ellipsize="end"
             android:fontFamily="sans-serif"
             android:maxLines="4"
-            android:textColor="@android:color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

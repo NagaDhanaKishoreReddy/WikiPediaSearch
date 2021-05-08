@@ -12,15 +12,15 @@ import androidx.lifecycle.Observer
 import com.crp.wikisearcher.databinding.ActivityMainBinding
 import com.crp.wikisearcher.utils.Helper
 import com.crp.wikisearcher.view.State
-import com.crp.wikisearcher.view.WikiAdapter
-import com.crp.wikisearcher.viewmodel.WikiViewModel
+import com.crp.wikisearcher.view.Adapter
+import com.crp.wikisearcher.viewmodel.ViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
 
 
-    private val viewModel: WikiViewModel by viewModel()
+    private val viewModel: ViewModel by viewModel()
 
     private lateinit var binding: ActivityMainBinding
 
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 is State.Success -> {
                     loadingState(false)
                     binding.wikiRv.adapter =
-                        state.data.query?.pages?.let { WikiAdapter(it) { it1 -> openBrowser(it1 as String) } }
+                        state.data.query?.pages?.let { Adapter(it) { it1 -> openBrowser(it1 as String) } }
                 }
                 is State.Error -> {
                     loadingState(false)
